@@ -14,6 +14,7 @@ $ npm install duo-parse
 ```js
 var parse = require('duo-parse');
 var obj = parse('component/tip@0.1.0:index.js')
+
 obj.user     // component
 obj.repo     // tip
 obj.ref      // 0.1.0
