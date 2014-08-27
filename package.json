@@ -1,6 +1,6 @@
 {
   "name": "duo-parse",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "duo's dependency parser",
   "keywords": [],
   "author": "Matthew Mueller <mattmuelle@gmail.com>",
