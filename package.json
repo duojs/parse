@@ -1,0 +1,13 @@
+{
+  "name": "duo-parse",
+  "version": "0.0.1",
+  "description": "duo's dependency parser",
+  "keywords": [],
+  "author": "Matthew Mueller <mattmuelle@gmail.com>",
+  "repository": { "type": "git", "url": "git://github.com/MatthewMueller/duo-parse.git" },
+  "devDependencies": {
+    "mocha": "*",
+    "expect.js": "*"
+  },
+  "main": "index"
+}
