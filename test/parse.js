@@ -83,6 +83,15 @@ describe('parse()', function(){
         provider: 'github.com',
       });
     })
+
+    it('should parse stars correctly', function() {
+      expect(parse('component/emitter@*')).to.eql({
+        user: 'component',
+        repo: 'emitter',
+        ref: '*',
+        provider: 'github.com',
+      })
+    })
   })
 
   describe('provider/user/repo@ref', function(){

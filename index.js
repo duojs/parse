@@ -9,7 +9,7 @@ module.exports = exports = parse;
  */
 
 exports.path = /(.+)/;
-exports.ref = /([A-Za-z0-9-_\/\.$!#%&\(\)\+=]+)/;
+exports.ref = /([A-Za-z0-9-_\/\.$!#%&\(\)\+=\*]+)/;
 exports.repo = /([A-Za-z0-9-_\.]+)/;
 exports.user = /([A-Za-z0-9-]{1,39})/;
 exports.provider = /([a-z-]+\.[a-z]+)/;
