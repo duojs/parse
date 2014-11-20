@@ -1,98 +1,59 @@
+
 /**
  * Export `parse`
  */
 
-module.exports = exports = parse;
+module.exports = parse;
 
 /**
- * Regexps
- */
-
-exports.path = /(.+)/;
-exports.ref = /([A-Za-z0-9-_\/\.$!#%&\(\)\+=\*]+)/;
-exports.repo = /([A-Za-z0-9-_\.]+)/;
-exports.user = /([A-Za-z0-9-]{1,39})/;
-exports.provider = /([a-z-]+\.[a-z]+)/;
-exports.slug = new RegExp(exports.user.source + '-' + exports.repo.source + '@' + exports.ref.source, 'i');
-
-/**
- * Cache
- */
-
-var cache = {};
-
-/**
- * Patterns
- */
-
-var slugs = [
-  'user/repo@ref:path',
-  'user/repo@ref',
-  'repo@ref:path',
-  'user/repo:path',
-  'user/repo',
-  'repo:path',
-];
-
-var patterns = slugs.concat(slugs.map(provider)).map(match);
-
-/**
- * Parse a `path`
+ * Parse the given `slug`.
  *
- * @param {String} path
+ * @param {String} slug
  * @return {Object}
+ * @api public
  */
 
-function parse(path){
-  path = path.trim();
-  var match = cache[path];
+function parse(slug) {
+  var obj = {};
+  var at, colon, parts;
 
-  for (var i = 0, fn; fn = patterns[i]; i++) {
-    if (match) break;
-    match = fn(path);
+  if (~(at = slug.indexOf('@'))) {
+    var split = slug.substring(at + 1);
+    parts = slug.substring(0, at).split('/');
+    if (~(colon = split.indexOf(':'))) {
+      // user/repo@version:path
+      obj.ref = split.substring(0, colon);
+      obj.path = split.substring(colon + 1);
+    } else {
+      // user/repo@version
+      obj.ref = split;
+    }
+  } else {
+    if (~(colon = slug.indexOf(':'))) {
+      // user/repo:path
+      obj.path = slug.substring(colon + 1);
+      parts = slug.substring(0, colon).split('/');
+    } else {
+      // user/repo
+      parts = slug.split('/');
+    }
   }
 
-  return cache[path] = match = match || {
-    repo: path,
-    provider: 'github.com',
-  };
-}
+  if (3 == parts.length) {
+    // provider.com/someuser/somerepo
+    obj.provider = parts[0];
+    obj.user = parts[1];
+    obj.repo = parts[2];
+  } else if (2 == parts.length) {
+    // someuser/somerepo
+    obj.user = parts[0];
+    obj.repo = parts[1];
+  } else if (1 == parts.length) {
+    // somerepo
+    obj.repo = parts[0];
+  }
 
-/**
- * Create a regexp matcher from a `pattern`
- *
- * @param {String}
- * @return {RegExp}
- */
+  obj.provider = obj.provider || 'github.com';
 
-function match(pattern){
-  var parts = pattern.match(/\w+|[^\w]/g);
-  var names = pattern.match(/\w+/g);
-
-  var source = parts.map(function(part){
-    return exports[part] ? exports[part].source : part;
-  });
-
-  var regexp = new RegExp('^' + source.join('') + '$');
-  return function(path){
-    var m = regexp.exec(path);
-    if (!m) return;
-
-    m = m.slice(1);
-    var match = m.reduce(function(ret, match, i){
-      var key = names[i];
-      ret[key] = match;
-      return ret;
-    }, {});
-    match.provider = match.provider || 'github.com';
-    return match;
-  };
-}
-
-/**
- * Prefix `str` with "provider".
- */
-
-function provider(str) {
-  return 'provider/' + str;
+  return obj
 }

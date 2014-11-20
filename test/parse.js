@@ -92,6 +92,15 @@ describe('parse()', function(){
         provider: 'github.com',
       })
     })
+
+    it('should handle semver symbols', function(){
+      expect(parse('component/classes@^1.2.1')).to.eql({
+        user: 'component',
+        repo: 'classes',
+        ref: '^1.2.1',
+        provider: 'github.com',
+      });
+    })
   })
 
   describe('provider/user/repo@ref', function(){
