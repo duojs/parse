@@ -48,7 +48,7 @@ function parse(slug) {
     // someuser/somerepo
     obj.user = parts[0];
     obj.repo = parts[1];
-  } else if (1 == parts.length) {
+  } else {
     // somerepo
     obj.repo = parts[0];
   }
