@@ -1,4 +1,10 @@
 
+0.2.0 / 2014-12-16
+==================
+
+ * fixing semver range support
+ * internal rewrite
+
 0.1.1 / 2014-09-03
 ==================
 
