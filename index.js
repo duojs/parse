@@ -39,12 +39,12 @@ function parse(slug) {
     }
   }
 
-  if (3 == parts.length) {
+  if (parts.length === 3) {
     // provider.com/someuser/somerepo
     obj.provider = parts[0];
     obj.user = parts[1];
     obj.repo = parts[2];
-  } else if (2 == parts.length) {
+  } else if (parts.length === 2) {
     // someuser/somerepo
     obj.user = parts[0];
     obj.repo = parts[1];
@@ -55,5 +55,5 @@ function parse(slug) {
 
   obj.provider = obj.provider || 'github.com';
 
-  return obj
+  return obj;
 }
