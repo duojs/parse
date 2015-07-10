@@ -20,7 +20,7 @@ module.exports = parse;
  */
 
 function parse(slug) {
-  var obj = {};
+  var obj = { slug: slug };
   var at, colon, parts;
 
   if (~(at = slug.indexOf('@'))) {
