@@ -1,7 +1,10 @@
 
 # duo-parse
 
-  duo's dependency parser
+[![npm package](https://img.shields.io/npm/v/duo-parse.svg)](https://www.npmjs.com/package/duo-parse)
+[![travis build status](https://img.shields.io/travis/duojs/parse.svg)](https://travis-ci.org/duojs/parse)
+
+> duo's dependency parser
 
 ## Installation
 
