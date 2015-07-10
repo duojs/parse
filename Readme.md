@@ -6,18 +6,12 @@
 
 > duo's dependency parser
 
-## Installation
-
-```bash
-$ npm install duo-parse
-```
-
-## Usage
+## parse(slug)
 
 ```js
-var parse = require('duo-parse');
-var obj = parse('component/tip@0.1.0:index.js')
+var obj = parse('component/tip@0.1.0:index.js');
 
+obj.slug     // component/tip@0.1.0:index.js
 obj.user     // component
 obj.repo     // tip
 obj.ref      // 0.1.0
@@ -25,12 +19,9 @@ obj.path     // index.js
 obj.provider // github.com
 ```
 
-## Test
+This function comes memoized by default, so there is no need to
+cache results externally.
 
-```bash
-$ npm install
-$ make test
-```
 
 ## License
 
