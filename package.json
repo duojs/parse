@@ -2,7 +2,10 @@
   "name": "duo-parse",
   "version": "0.2.0",
   "description": "duo's dependency parser",
-  "keywords": [ "duo", "parse" ],
+  "keywords": [
+    "duo",
+    "parse"
+  ],
   "author": "Matthew Mueller <mattmuelle@gmail.com>",
   "repository": "duojs/parse",
   "devDependencies": {
@@ -11,5 +14,8 @@
     "expect.js": "^0.3.1",
     "istanbul": "^0.3.2",
     "mocha": "^2.2.5"
+  },
+  "dependencies": {
+    "debug": "^2.2.0"
   }
 }

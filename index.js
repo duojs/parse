@@ -1,5 +1,11 @@
 
 /**
+ * Module dependencies.
+ */
+
+var debug = require('debug')('duo-parse');
+
+/**
  * Export `parse`
  */
 
@@ -55,5 +61,6 @@ function parse(slug) {
 
   obj.provider = obj.provider || 'github.com';
 
+  debug('parsed %s', slug, obj);
   return obj;
 }
