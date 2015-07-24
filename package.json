@@ -19,5 +19,7 @@
   "dependencies": {
     "debug": "^2.2.0",
     "memoize-sync": "0.0.2"
-  }
+  },
+  "main": "index.js",
+  "license": "MIT"
 }
