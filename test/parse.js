@@ -3,7 +3,6 @@
  */
 
 var expect = require('expect.js');
-var timed = require('timed');
 var parse = require('..');
 
 /**

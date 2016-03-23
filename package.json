@@ -13,8 +13,7 @@
     "eslint-config-duo": "0.0.1",
     "expect.js": "^0.3.1",
     "istanbul": "^0.3.2",
-    "mocha": "^2.2.5",
-    "timed": "^0.1.1"
+    "mocha": "^2.2.5"
   },
   "dependencies": {
     "debug": "^2.2.0"
