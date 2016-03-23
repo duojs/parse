@@ -1,4 +1,10 @@
 
+0.5.0 / 2016-03-22
+==================
+
+  * remove memoize-sync
+  * package: Add "main" and "license" fields
+
 0.4.0 / 2015-07-10
 ==================
 
