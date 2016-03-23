@@ -3,7 +3,6 @@
  */
 
 var expect = require('expect.js');
-var timed = require('timed');
 var parse = require('..');
 
 /**
@@ -179,17 +178,5 @@ describe('parse()', function(){
         provider: 'github.com'
       });
     });
-  });
-
-  it('should be memoized', function(){
-    timed.reset();
-    parse('component/each');
-    var goal = timed.since() / 5;
-
-    timed.reset();
-    parse('component/each');
-    var actual = timed.since();
-
-    expect(actual).to.be.below(goal);
   });
 });

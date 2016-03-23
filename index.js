@@ -4,13 +4,12 @@
  */
 
 var debug = require('debug')('duo-parse');
-var memoize = require('memoize-sync');
 
 /**
  * Export `parse`
  */
 
-module.exports = memoize(parse);
+module.exports = parse;
 
 /**
  * Parse the given `slug`.
