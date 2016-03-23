@@ -180,16 +180,4 @@ describe('parse()', function(){
       });
     });
   });
-
-  it('should be memoized', function(){
-    timed.reset();
-    parse('component/each');
-    var goal = timed.since() / 5;
-
-    timed.reset();
-    parse('component/each');
-    var actual = timed.since();
-
-    expect(actual).to.be.below(goal);
-  });
 });
